@@ -188,6 +188,47 @@ Return as JSON:
 - [ ] Test with different email types (sales, support, follow-up)
 - [ ] Each returns appropriate subject lines
 
+### Phase 4: Unit and Integration Tests (90 min)
+
+- [ ] Write unit tests for subject line generation
+  - Test prompt construction with different email body lengths
+  - Test parsing 5 subject lines from OpenAI response
+  - Test handling of malformed API responses
+  - Test error handling for API failures
+
+- [ ] Write unit tests for caching
+  - Test cache key based on email body hash
+  - Test cache retrieval for repeated requests
+  - Test cache invalidation after 24 hours
+
+- [ ] Write integration tests for generation endpoint
+  - Test POST /api/ai/subject-lines with valid email body returns 5 suggestions
+  - Test endpoint caches results
+  - Test endpoint requires authentication
+  - Test endpoint validates input
+  - Test endpoint handles empty/short email bodies
+
+- [ ] Write integration tests for OpenAI API
+  - Test actual API call with real OpenAI key
+  - Test response time <2 seconds
+  - Test handling rate limits and errors
+
+- [ ] Write integration tests for extension UI
+  - Test clicking "Generate Subject Lines" button calls API
+  - Test 5 suggestions displayed
+  - Test clicking suggestion updates subject field
+  - Test loading state shown during generation
+
+- [ ] Write quality tests
+  - Test subject lines are relevant to email content
+  - Test subject lines vary (not all similar)
+  - Test subject lines for different email types (sales, support, follow-up)
+
+- [ ] Run all tests and ensure 70%+ code coverage
+  - Execute test suite
+  - Verify subject line generation and caching fully tested
+  - Document OpenAI costs per generation
+
 ---
 
 ## Definition of Done

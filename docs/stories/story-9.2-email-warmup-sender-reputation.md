@@ -100,6 +100,43 @@ Email warmup prevents new accounts from being flagged as spam by gradually build
 - [ ] Implement daily send limit enforcement
 - [ ] Create recommendations engine based on metrics
 
+### Unit and Integration Tests (90 min)
+
+- [ ] Write unit tests for warmup algorithm
+  - Test calculating send volume for each week
+  - Test gradual volume increase (20% week 1 → 100% week 4)
+  - Test respecting daily sending limits
+  - Test handling weekends (lower volume)
+
+- [ ] Write unit tests for reputation scoring
+  - Test calculating reputation score from metrics
+  - Test weighting factors (bounce rate, spam complaints, open rate)
+  - Test score thresholds (poor <50, good >80)
+
+- [ ] Write integration tests for warmup execution
+  - Test warmup schedule sends correct volume each day
+  - Test warmup pauses if high bounce rate detected
+  - Test warmup completes after 4 weeks
+
+- [ ] Write integration tests for reputation monitoring
+  - Test bounce rate tracked correctly
+  - Test spam complaints recorded
+  - Test reputation score recalculated daily
+
+- [ ] Write integration tests for recommendations
+  - Test recommendation to pause sending if reputation drops
+  - Test recommendation to increase warmup duration if bounces high
+  - Test recommendation to clean list if engagement low
+
+- [ ] Write integration tests for UI
+  - Test warmup dashboard shows current week and volume
+  - Test reputation score displayed with color coding
+  - Test recommendations shown in alert panel
+
+- [ ] Run all tests and ensure 70%+ code coverage
+  - Execute test suite
+  - Verify warmup algorithm and reputation monitoring fully tested
+
 ### QA Verification Checklist
 
 - [ ] Enable email warmup for new account

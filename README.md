@@ -23,6 +23,25 @@ pnpm install
 pnpm dev
 ```
 
+## Database Setup
+
+- Copy or create a `.env` file that sets both `DATABASE_URL=postgresql://aitracker:devpassword@localhost:5432/ai_tracker_dev` and `TEST_DATABASE_URL=postgresql://aitracker:devpassword@localhost:5433/ai_tracker_test` (adjust creds as needed).
+- Add auth secrets alongside your DB settings: e.g. `JWT_SECRET=dev-secret`, `JWT_EXPIRES_IN=7d`, `BCRYPT_ROUNDS=10`.
+- Start the paired local databases (dev on `5432`, test on `5433`) with `pnpm db:start`. Tail logs with `pnpm db:logs` and stop everything with `pnpm db:stop`.
+- Compile the TypeScript migrations and apply them to the dev DB via `pnpm --filter @ai-email-tracker/api migrate:up`. Use `migrate:down`/`migrate:redo` for rollback cycles, or `migrate:up:test` to hydrate the dedicated test database.
+- Create new migrations with `pnpm --filter @ai-email-tracker/api migrate:create -- migration-name` (files are authored in TypeScript and compiled automatically before execution).
+- Run the integration test suite—which seeds the test database automatically—with `pnpm --filter @ai-email-tracker/api test`.
+- Verify connectivity via the health utility: `pnpm --filter @ai-email-tracker/api ts-node src/index.ts`.
+
+### Schema Overview
+
+```
+users
+  └─ email_accounts
+       └─ tracked_emails
+            └─ tracking_events
+```
+
 ### Useful Commands
 
 ```bash

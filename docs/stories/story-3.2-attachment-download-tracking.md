@@ -101,6 +101,51 @@ Attachment tracking enables users to gauge recipient interest in detailed materi
 - [ ] Implement file type restrictions (block executables)
 - [ ] Add virus scanning (optional, use ClamAV or similar)
 
+### Unit and Integration Tests (90 min)
+
+- [ ] Write unit tests for file upload handling
+  - Test file size validation (max 25MB for MVP)
+  - Test file type validation (block executables)
+  - Test filename sanitization
+  - Test storage path generation
+
+- [ ] Write unit tests for tracking URL generation
+  - Test unique tracking ID generation
+  - Test tracking URL format
+  - Test URL includes attachment metadata
+
+- [ ] Write integration tests for upload endpoint
+  - Test POST /api/attachments/upload with valid file succeeds
+  - Test endpoint creates Attachment record in database
+  - Test endpoint stores file in correct location
+  - Test endpoint returns tracking_url
+  - Test endpoint requires authentication
+  - Test endpoint validates file size and type
+
+- [ ] Write integration tests for download tracking endpoint
+  - Test GET /api/track/attachment/{id} creates download event
+  - Test endpoint streams file with correct headers
+  - Test endpoint records IP, user agent, timestamp
+  - Test endpoint handles missing or deleted files
+  - Test endpoint prevents unauthorized access to private attachments
+
+- [ ] Write integration tests for download event recording
+  - Test download event associated with correct tracked_email
+  - Test multiple downloads recorded separately
+  - Test download events trigger WebSocket notifications
+
+- [ ] Write integration tests for dashboard display
+  - Test dashboard shows attachments for each tracked email
+  - Test attachments display with download counts
+  - Test attachment details show who downloaded and when
+
+- [ ] Write end-to-end test for attachment tracking flow
+  - Test upload → tracking URL generated → email sent → recipient downloads → tracking event → notification → dashboard updates
+
+- [ ] Run all tests and ensure 70%+ code coverage
+  - Execute test suite
+  - Verify upload, download tracking, and storage fully tested
+
 ### QA Verification Checklist
 
 - [ ] Upload PDF file (5MB)

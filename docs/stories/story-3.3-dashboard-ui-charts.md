@@ -110,6 +110,54 @@ The analytics dashboard is the primary interface where users see their tracking 
 - [ ] Style with Tailwind CSS or Material-UI
 - [ ] Make responsive (mobile breakpoints)
 
+### Unit and Integration Tests (90 min)
+
+- [ ] Write unit tests for stats calculation
+  - Test calculating total sent, opened, clicked counts
+  - Test calculating open rate percentage
+  - Test calculating click rate percentage
+  - Test handling division by zero (no emails sent)
+
+- [ ] Write unit tests for chart data formatting
+  - Test formatting data for Recharts library
+  - Test time series aggregation (daily, weekly, monthly)
+  - Test handling empty data sets
+  - Test date range filtering logic
+
+- [ ] Write integration tests for dashboard API endpoints
+  - Test GET /api/dashboard/stats returns correct aggregate data
+  - Test GET /api/dashboard/timeline returns time series data
+  - Test endpoints filter by date range
+  - Test endpoints require authentication
+  - Test endpoints return only user's data
+
+- [ ] Write integration tests for React components
+  - Test StatCard component displays correct data
+  - Test TimelineChart renders with data
+  - Test EmailList component shows emails with status
+  - Test components handle loading states
+  - Test components handle error states
+
+- [ ] Write integration tests for real-time updates
+  - Test WebSocket notification triggers data refresh
+  - Test dashboard stats update when new tracking event occurs
+  - Test timeline chart updates with new data points
+
+- [ ] Write integration tests for date range filtering
+  - Test selecting "Last 7 days" updates all charts
+  - Test selecting "Last 30 days" updates all charts
+  - Test custom date range filtering works
+
+- [ ] Write tests for responsive design
+  - Test dashboard renders correctly on mobile (375px width)
+  - Test dashboard renders correctly on tablet (768px width)
+  - Test dashboard renders correctly on desktop (1920px width)
+
+- [ ] Run all tests and ensure 70%+ code coverage
+  - Execute test suite for web package
+  - Verify dashboard components and API fully tested
+  - Test across major browsers (Chrome, Firefox, Safari)
+
 ### QA Verification Checklist
 
 - [ ] Open dashboard

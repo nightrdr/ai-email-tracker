@@ -698,6 +698,65 @@ This story creates the "wow moment" for users by delivering instant notification
   - Trigger email open
   - Verify both tabs receive notification
 
+### Phase 8: Unit and Integration Tests (90 min)
+
+- [ ] **Step 8.1:** Write unit tests for Redis service
+  - Test Redis connection establishment
+  - Test publish message to channel
+  - Test subscribe to channel
+  - Test connection error handling
+  - Test reconnection logic
+
+- [ ] **Step 8.2:** Write unit tests for WebSocket authentication
+  - Test JWT token extraction from query or headers
+  - Test valid token allows connection
+  - Test invalid token rejects connection
+  - Test expired token rejects connection
+  - Test user_id extracted correctly from token
+
+- [ ] **Step 8.3:** Write unit tests for user room management
+  - Test user joins room on connection
+  - Test user leaves room on disconnection
+  - Test multiple connections for same user join same room
+
+- [ ] **Step 8.4:** Write unit tests for notification formatting
+  - Test email open notification format includes all required fields
+  - Test notification payload structure is correct
+  - Test timestamp format is valid
+
+- [ ] **Step 8.5:** Write integration tests for WebSocket connection flow
+  - Test client connects with valid JWT token successfully
+  - Test server authenticates and joins user to correct room
+  - Test ping/pong heartbeat mechanism works
+  - Test disconnection cleans up resources
+
+- [ ] **Step 8.6:** Write integration tests for notification delivery
+  - Test tracking event triggers WebSocket notification
+  - Test notification delivered only to correct user (room isolation)
+  - Test notification contains correct tracking event data
+  - Test multiple connected clients receive same notification
+
+- [ ] **Step 8.7:** Write integration tests for Redis pub/sub
+  - Test message published to Redis channel
+  - Test all subscribed clients receive message
+  - Test pub/sub works across multiple server instances (horizontal scaling)
+
+- [ ] **Step 8.8:** Write integration tests for notification latency
+  - Test notification delivered within 5 seconds of tracking event
+  - Test notification delivered within 1 second target
+  - Test notification order preserved for multiple events
+
+- [ ] **Step 8.9:** Write load tests for concurrent WebSocket connections
+  - Test system handles 100+ simultaneous connections
+  - Test message delivery under high connection load
+  - Test connection stability over time
+
+- [ ] **Step 8.10:** Run all tests and ensure 70%+ code coverage
+  - Execute test suite
+  - Generate coverage report
+  - Verify WebSocket and Redis logic fully tested
+  - Document performance benchmarks
+
 ---
 
 ## QA Verification Checklist

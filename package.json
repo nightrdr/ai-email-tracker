@@ -9,7 +9,10 @@
     "test": "pnpm -r test",
     "lint": "eslint . --ext .ts,.tsx",
     "format": "prettier --write \"**/*.{ts,tsx,js,json,md}\"",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "db:start": "docker compose up -d postgres-dev postgres-test",
+    "db:stop": "docker compose down",
+    "db:logs": "docker compose logs -f postgres-dev postgres-test"
   },
   "devDependencies": {
     "@types/node": "^24.10.1",

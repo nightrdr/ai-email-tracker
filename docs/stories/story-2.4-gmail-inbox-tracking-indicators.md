@@ -109,6 +109,37 @@ Visual indicators in Gmail inbox provide instant visibility into email engagemen
 - [ ] Optimize query with proper indexes
 - [ ] Add pagination (limit 1000 recent emails)
 
+### Unit and Integration Tests (60 min)
+
+- [ ] Write unit tests for DOM manipulation functions
+  - Test finding Gmail email rows by message_id
+  - Test inserting tracking indicator icon
+  - Test icon positioning and styling
+  - Test handling missing or malformed email rows
+
+- [ ] Write integration tests for backend API endpoint
+  - Test GET /api/emails/tracked returns user's tracked emails
+  - Test response includes message_id, open_count, click_count, last_opened
+  - Test endpoint filters by authenticated user
+  - Test pagination works correctly
+  - Test requires authentication
+
+- [ ] Write integration tests for content script
+  - Test content script loads on Gmail inbox page
+  - Test content script fetches tracked emails from API
+  - Test tracking indicators inserted for tracked emails
+  - Test indicators show correct open/click counts
+  - Test indicators update on page navigation
+
+- [ ] Write tests for real-time indicator updates
+  - Test indicator updates when WebSocket notification received
+  - Test open count increments in real-time
+  - Test click count increments in real-time
+
+- [ ] Run all tests and ensure 70%+ code coverage
+  - Execute test suite
+  - Verify DOM manipulation and API integration tested
+
 ### QA Verification Checklist
 
 - [ ] Open Gmail inbox after sending tracked email

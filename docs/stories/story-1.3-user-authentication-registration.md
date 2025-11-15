@@ -30,51 +30,51 @@ Authentication is critical for:
 ## Acceptance Criteria
 
 ### ✅ AC1: User Registration Endpoint
-- [ ] POST /api/auth/register endpoint created
-- [ ] Accepts email and password in request body
-- [ ] Creates user with bcrypt-hashed password
-- [ ] Returns JWT token and user object (password excluded)
+- [x] POST /api/auth/register endpoint created
+- [x] Accepts email and password in request body
+- [x] Creates user with bcrypt-hashed password
+- [x] Returns JWT token and user object (password excluded)
 
 ### ✅ AC2: Email Validation
-- [ ] Email format validated (valid email syntax)
-- [ ] Email uniqueness checked (no duplicate accounts)
-- [ ] Clear error messages for invalid email
+- [x] Email format validated (valid email syntax)
+- [x] Email uniqueness checked (no duplicate accounts)
+- [x] Clear error messages for invalid email
 
 ### ✅ AC3: Password Validation
-- [ ] Minimum 8 characters enforced
-- [ ] Requires mix of letters and numbers
-- [ ] Clear error messages for weak passwords
+- [x] Minimum 8 characters enforced
+- [x] Requires mix of letters and numbers
+- [x] Clear error messages for weak passwords
 
 ### ✅ AC4: User Login Endpoint
-- [ ] POST /api/auth/login endpoint created
-- [ ] Validates credentials against database
-- [ ] Returns JWT token on successful login
-- [ ] Returns 401 for invalid credentials
+- [x] POST /api/auth/login endpoint created
+- [x] Validates credentials against database
+- [x] Returns JWT token on successful login
+- [x] Returns 401 for invalid credentials
 
 ### ✅ AC5: JWT Token Management
-- [ ] JWT tokens expire after 7 days
-- [ ] Token includes user_id claim
-- [ ] Token includes subscription_tier claim
-- [ ] Token signed with secure secret
+- [x] JWT tokens expire after 7 days
+- [x] Token includes user_id claim
+- [x] Token includes subscription_tier claim
+- [x] Token signed with secure secret
 
 ### ✅ AC6: Authentication Middleware
-- [ ] Middleware function validates JWT on protected routes
-- [ ] Extracts user info from valid tokens
-- [ ] Returns 401 for missing/invalid tokens
-- [ ] Middleware reusable across all protected endpoints
+- [x] Middleware function validates JWT on protected routes
+- [x] Extracts user info from valid tokens
+- [x] Returns 401 for missing/invalid tokens
+- [x] Middleware reusable across all protected endpoints
 
 ### ✅ AC7: Error Handling
-- [ ] 400 Bad Request for validation errors
-- [ ] 401 Unauthorized for auth failures
-- [ ] 409 Conflict for duplicate email
-- [ ] 500 Internal Server Error with generic message
-- [ ] Error details logged server-side only
+- [x] 400 Bad Request for validation errors
+- [x] 401 Unauthorized for auth failures
+- [x] 409 Conflict for duplicate email
+- [x] 500 Internal Server Error with generic message
+- [x] Error details logged server-side only
 
 ### ✅ AC8: Security Best Practices
-- [ ] Passwords never stored in plain text
-- [ ] Passwords never returned in API responses
-- [ ] bcrypt salt rounds configured appropriately
-- [ ] JWT secret stored in environment variable
+- [x] Passwords never stored in plain text
+- [x] Passwords never returned in API responses
+- [x] bcrypt salt rounds configured appropriately
+- [x] JWT secret stored in environment variable
 
 ---
 
@@ -126,25 +126,25 @@ This story establishes user authentication required for all personalized feature
 
 ### Phase 1: Install Dependencies (10 min)
 
-- [ ] **Step 1.1:** Install authentication packages
+- [x] **Step 1.1:** Install authentication packages
   ```bash
   cd packages/api
   pnpm add bcrypt jsonwebtoken
   pnpm add -D @types/bcrypt @types/jsonwebtoken
   ```
 
-- [ ] **Step 1.2:** Install validation packages
+- [x] **Step 1.2:** Install validation packages
   ```bash
   pnpm add express-validator
   ```
 
-- [ ] **Step 1.3:** Install Express (if not already)
+- [x] **Step 1.3:** Install Express (if not already)
   ```bash
   pnpm add express cors dotenv
   pnpm add -D @types/express @types/cors
   ```
 
-- [ ] **Step 1.4:** Configure environment variables
+- [x] **Step 1.4:** Configure environment variables
   ```bash
   # packages/api/.env
   JWT_SECRET=your-super-secret-jwt-key-change-in-production
@@ -162,7 +162,7 @@ This story establishes user authentication required for all personalized feature
 
 ### Phase 2: Create Auth Utilities (30 min)
 
-- [ ] **Step 2.1:** Create password hashing utility
+- [x] **Step 2.1:** Create password hashing utility
   ```typescript
   // packages/api/src/utils/password.ts
   import bcrypt from 'bcrypt';
@@ -181,7 +181,7 @@ This story establishes user authentication required for all personalized feature
   }
   ```
 
-- [ ] **Step 2.2:** Create JWT utility
+- [x] **Step 2.2:** Create JWT utility
   ```typescript
   // packages/api/src/utils/jwt.ts
   import jwt from 'jsonwebtoken';
@@ -210,7 +210,7 @@ This story establishes user authentication required for all personalized feature
   }
   ```
 
-- [ ] **Step 2.3:** Create validation schemas
+- [x] **Step 2.3:** Create validation schemas
   ```typescript
   // packages/api/src/validators/auth.ts
   import { body } from 'express-validator';
@@ -238,7 +238,7 @@ This story establishes user authentication required for all personalized feature
   ];
   ```
 
-- [ ] **Step 2.4:** Create validation middleware
+- [x] **Step 2.4:** Create validation middleware
   ```typescript
   // packages/api/src/middleware/validate.ts
   import { Request, Response, NextFunction } from 'express';
@@ -260,7 +260,7 @@ This story establishes user authentication required for all personalized feature
 
 ### Phase 3: Create Auth Service (45 min)
 
-- [ ] **Step 3.1:** Create user service
+- [x] **Step 3.1:** Create user service
   ```typescript
   // packages/api/src/services/user.service.ts
   import { query } from '../db';
@@ -316,7 +316,7 @@ This story establishes user authentication required for all personalized feature
   }
   ```
 
-- [ ] **Step 3.2:** Create auth service
+- [x] **Step 3.2:** Create auth service
   ```typescript
   // packages/api/src/services/auth.service.ts
   import { UserService, CreateUserDto } from './user.service';
@@ -381,7 +381,7 @@ This story establishes user authentication required for all personalized feature
 
 ### Phase 4: Create Auth Controllers (30 min)
 
-- [ ] **Step 4.1:** Create auth controller
+- [x] **Step 4.1:** Create auth controller
   ```typescript
   // packages/api/src/controllers/auth.controller.ts
   import { Request, Response } from 'express';
@@ -434,7 +434,7 @@ This story establishes user authentication required for all personalized feature
 
 ### Phase 5: Create Authentication Middleware (30 min)
 
-- [ ] **Step 5.1:** Create auth middleware
+- [x] **Step 5.1:** Create auth middleware
   ```typescript
   // packages/api/src/middleware/auth.ts
   import { Request, Response, NextFunction } from 'express';
@@ -516,7 +516,7 @@ This story establishes user authentication required for all personalized feature
 
 ### Phase 6: Create Auth Routes (20 min)
 
-- [ ] **Step 6.1:** Create auth routes
+- [x] **Step 6.1:** Create auth routes
   ```typescript
   // packages/api/src/routes/auth.routes.ts
   import { Router } from 'express';
@@ -552,7 +552,7 @@ This story establishes user authentication required for all personalized feature
 
 ### Phase 7: Setup Express App (30 min)
 
-- [ ] **Step 7.1:** Create Express app
+- [x] **Step 7.1:** Create Express app
   ```typescript
   // packages/api/src/app.ts
   import express from 'express';
@@ -590,7 +590,7 @@ This story establishes user authentication required for all personalized feature
   export default app;
   ```
 
-- [ ] **Step 7.2:** Create server entry point
+- [x] **Step 7.2:** Create server entry point
   ```typescript
   // packages/api/src/index.ts
   import app from './app';
@@ -602,7 +602,7 @@ This story establishes user authentication required for all personalized feature
   });
   ```
 
-- [ ] **Step 7.3:** Update package.json scripts
+- [x] **Step 7.3:** Update package.json scripts
   ```json
   // packages/api/package.json
   {
@@ -673,6 +673,64 @@ This story establishes user authentication required for all personalized feature
     -H "Authorization: Bearer $TOKEN"
   ```
   Expected: 200 status, user info returned
+
+### Phase 9: Unit and Integration Tests (90 min)
+
+- [ ] **Step 9.1:** Install testing framework (Jest) and configure for API package
+
+- [ ] **Step 9.2:** Write unit tests for password hashing utilities
+  - Test bcrypt hash generation
+  - Test password comparison (correct and incorrect passwords)
+  - Test hash strength validation
+
+- [ ] **Step 9.3:** Write unit tests for JWT utilities
+  - Test token generation with valid payload
+  - Test token verification with valid token
+  - Test token verification with expired token
+  - Test token verification with invalid signature
+
+- [ ] **Step 9.4:** Write unit tests for auth service
+  - Test user registration with valid data
+  - Test registration with duplicate email (should throw error)
+  - Test login with valid credentials
+  - Test login with invalid credentials (should throw error)
+  - Test password is not returned in user object
+
+- [x] **Step 9.5:** Write integration tests for registration endpoint
+  - Test POST /api/auth/register with valid data returns 201 and token
+  - Test duplicate registration returns 409 error
+  - Test invalid email format returns 400 error
+  - Test weak password returns 400 error
+  - Test missing fields return 400 error
+
+- [x] **Step 9.6:** Write integration tests for login endpoint
+  - Test POST /api/auth/login with valid credentials returns 200 and token
+  - Test login with wrong password returns 401 error
+  - Test login with non-existent user returns 401 error
+  - Test login validates email format
+
+- [ ] **Step 9.7:** Write integration tests for authentication middleware
+  - Test protected route without token returns 401
+  - Test protected route with invalid token returns 401
+  - Test protected route with expired token returns 401
+  - Test protected route with valid token allows access
+  - Test user data attached to request object
+
+- [ ] **Step 9.8:** Write integration tests for end-to-end auth flow
+  - Test complete registration → login → access protected route flow
+  - Test JWT token contains correct user claims
+  - Test token expiration after 7 days
+  - Test password stored as hash in database, not plain text
+
+- [ ] **Step 9.9:** Run all tests and ensure 70%+ code coverage
+  - Execute test suite
+  - Generate coverage report
+  - Verify all critical paths tested
+  - Fix any failing tests
+
+- [x] **Step 9.10:** Add test scripts to package.json
+  - Add `test`, `test:watch`, and `test:coverage` scripts
+  - Document test execution in README
 
 ---
 
@@ -892,14 +950,14 @@ This story establishes user authentication required for all personalized feature
 
 ## Definition of Done
 
-- [ ] All acceptance criteria met
+- [x] All acceptance criteria met
 - [ ] All developer implementation steps completed
 - [ ] All QA verification steps pass
-- [ ] Registration and login endpoints working
-- [ ] JWT authentication middleware functional
+- [x] Registration and login endpoints working
+- [x] JWT authentication middleware functional
 - [ ] Manual testing completed successfully
-- [ ] No passwords exposed in API responses
-- [ ] Error handling comprehensive
+- [x] No passwords exposed in API responses
+- [x] Error handling comprehensive
 
 ---
 

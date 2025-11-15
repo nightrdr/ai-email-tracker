@@ -98,6 +98,46 @@ Templates enable users to scale their email outreach by reusing proven messaging
 - [ ] Load template content into compose window
 - [ ] Replace variables with recipient-specific data
 
+### Unit and Integration Tests (90 min)
+
+- [ ] Write unit tests for variable replacement logic
+  - Test replacing {{name}}, {{company}}, {{email}} with actual data
+  - Test handling missing variables (show placeholder or error)
+  - Test handling special characters in variables
+  - Test nested variables
+
+- [ ] Write integration tests for template CRUD endpoints
+  - Test POST /api/templates creates template
+  - Test GET /api/templates returns user's templates only
+  - Test GET /api/templates/:id returns specific template
+  - Test PUT /api/templates/:id updates template
+  - Test DELETE /api/templates/:id deletes template
+  - Test all endpoints require authentication
+  - Test user cannot access other user's templates
+
+- [ ] Write integration tests for template rendering
+  - Test rendering template with valid data
+  - Test rendering with missing variables handled gracefully
+  - Test HTML sanitization prevents XSS
+  - Test tracking pixel injected on render
+
+- [ ] Write integration tests for dashboard UI
+  - Test template list displays all templates
+  - Test creating new template via form
+  - Test editing template updates UI
+  - Test deleting template removes from list
+  - Test preview shows rendered template
+
+- [ ] Write tests for template validation
+  - Test template name required
+  - Test template body required
+  - Test variable syntax validation
+  - Test HTML validation
+
+- [ ] Run all tests and ensure 70%+ code coverage
+  - Execute test suite
+  - Verify template CRUD and rendering fully tested
+
 ### QA Verification Checklist
 
 - [ ] Create template "Follow Up" with subject and body

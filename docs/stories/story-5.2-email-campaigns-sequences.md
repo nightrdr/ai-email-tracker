@@ -104,6 +104,57 @@ Campaigns enable automated nurturing sequences that scale outreach efforts, tran
 - [ ] Implement unsubscribe handling
 - [ ] Add reply detection to stop campaigns
 
+### Unit and Integration Tests (120 min)
+
+- [ ] Write unit tests for campaign scheduling logic
+  - Test calculating send times for sequence emails
+  - Test handling delays between emails (1 day, 3 days, 7 days)
+  - Test pause/resume campaign logic
+  - Test stop campaign logic
+
+- [ ] Write unit tests for recipient list management
+  - Test parsing CSV with email addresses
+  - Test validating email addresses
+  - Test removing duplicates
+  - Test handling invalid emails
+
+- [ ] Write integration tests for campaign CRUD endpoints
+  - Test POST /api/campaigns creates campaign
+  - Test GET /api/campaigns returns user's campaigns
+  - Test PUT /api/campaigns/:id updates campaign
+  - Test DELETE /api/campaigns/:id deletes campaign
+  - Test POST /api/campaigns/:id/start starts campaign
+  - Test POST /api/campaigns/:id/pause pauses campaign
+
+- [ ] Write integration tests for campaign execution
+  - Test campaign sends first email to all recipients
+  - Test campaign sends second email after delay
+  - Test campaign tracks which recipients received which emails
+  - Test campaign stops if recipient replies
+  - Test campaign pauses correctly
+
+- [ ] Write integration tests for reply detection
+  - Test reply detected via webhook or polling
+  - Test reply stops further emails to that recipient
+  - Test reply marked in campaign dashboard
+
+- [ ] Write integration tests for campaign analytics
+  - Test dashboard shows open rates per email in sequence
+  - Test dashboard shows click rates per email
+  - Test dashboard shows reply rates
+  - Test dashboard shows recipients still in sequence
+
+- [ ] Write tests for edge cases
+  - Test campaign with zero recipients
+  - Test campaign with paused status doesn't send
+  - Test deleted campaign stops execution
+  - Test recipient unsubscribes mid-campaign
+
+- [ ] Run all tests and ensure 70%+ code coverage
+  - Execute test suite
+  - Verify campaign scheduling and execution fully tested
+  - Test cron jobs or scheduler integration
+
 ### QA Verification Checklist
 
 - [ ] Create campaign "Onboarding" with 3 steps (Day 0, Day 3, Day 7)

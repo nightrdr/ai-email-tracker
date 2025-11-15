@@ -102,6 +102,47 @@ Custom reports enable business users to analyze data specific to their needs, tr
 - [ ] Implement Excel export with formatted data
 - [ ] Add email delivery for scheduled reports
 
+### Unit and Integration Tests (90 min)
+
+- [ ] Write unit tests for query generation
+  - Test generating SQL/query from report configuration
+  - Test aggregations (SUM, COUNT, AVG)
+  - Test filtering logic
+  - Test grouping by different dimensions
+
+- [ ] Write unit tests for report scheduling
+  - Test calculating next run time for daily/weekly/monthly schedules
+  - Test cron expression generation
+  - Test handling timezone for scheduled reports
+
+- [ ] Write integration tests for report CRUD endpoints
+  - Test POST /api/reports creates report
+  - Test GET /api/reports returns user's reports
+  - Test PUT /api/reports/:id updates report
+  - Test DELETE /api/reports/:id deletes report
+  - Test endpoints require authentication
+
+- [ ] Write integration tests for report generation
+  - Test generating report executes correct query
+  - Test report includes configured metrics
+  - Test report applies filters
+  - Test report handles empty results
+
+- [ ] Write integration tests for report scheduling
+  - Test scheduled report runs at correct time
+  - Test report emailed to configured recipients
+  - Test report saved to dashboard
+
+- [ ] Write integration tests for UI
+  - Test drag-and-drop report builder
+  - Test adding metrics and dimensions
+  - Test preview shows sample data
+  - Test saving report configuration
+
+- [ ] Run all tests and ensure 70%+ code coverage
+  - Execute test suite
+  - Verify report generation and scheduling fully tested
+
 ### QA Verification Checklist
 
 - [ ] Open Report Builder

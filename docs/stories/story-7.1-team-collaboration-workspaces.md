@@ -99,6 +99,44 @@ Team collaboration transforms the product from individual to enterprise use case
 - [ ] Add permission checks in API endpoints
 - [ ] Create team member management UI
 
+### Unit and Integration Tests (90 min)
+
+- [ ] Write unit tests for permission logic
+  - Test owner can invite members
+  - Test member cannot invite others (unless admin)
+  - Test viewer has read-only access
+  - Test member can send but cannot manage team
+
+- [ ] Write integration tests for team CRUD endpoints
+  - Test POST /api/teams creates team
+  - Test GET /api/teams returns user's teams
+  - Test POST /api/teams/:id/members adds member
+  - Test DELETE /api/teams/:id/members/:userId removes member
+  - Test endpoints enforce permissions
+  - Test endpoints require authentication
+
+- [ ] Write integration tests for invitation flow
+  - Test sending invitation creates pending invite
+  - Test invite email sent to recipient
+  - Test accepting invite adds user to team
+  - Test declining invite removes pending invite
+  - Test expired invites cannot be accepted
+
+- [ ] Write integration tests for data isolation
+  - Test team members see only team data
+  - Test members cannot see other team's data
+  - Test owner can see all team activity
+
+- [ ] Write integration tests for UI
+  - Test team settings page shows member list
+  - Test adding member via email
+  - Test removing member updates list
+  - Test role changes update permissions
+
+- [ ] Run all tests and ensure 70%+ code coverage
+  - Execute test suite
+  - Verify team collaboration and permissions fully tested
+
 ### QA Verification Checklist
 
 - [ ] Create team "Sales Team"

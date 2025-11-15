@@ -763,6 +763,71 @@ This story is the culmination of Epic 1 - it validates the entire tracking archi
   SELECT * FROM tracking_events ORDER BY timestamp DESC LIMIT 5;
   ```
 
+### Phase 7: Unit and Integration Tests (120 min)
+
+- [ ] **Step 7.1:** Write unit tests for email service pixel injection
+  - Test pixel is correctly injected before closing body tag
+  - Test pixel contains correct tracking_pixel_id
+  - Test pixel has correct attributes (1x1, transparent, display:none)
+  - Test HTML without body tag handles gracefully
+  - Test malformed HTML handles gracefully
+
+- [ ] **Step 7.2:** Write unit tests for email service URL generation
+  - Test tracking_url is correctly formatted
+  - Test tracking_pixel_id is valid UUID
+  - Test URL includes correct domain and path
+
+- [ ] **Step 7.3:** Write unit tests for email preparation validation
+  - Test validates required fields (recipient, subject, body)
+  - Test validates email format
+  - Test validates user owns email_account_id
+  - Test throws appropriate errors for invalid input
+
+- [ ] **Step 7.4:** Write integration tests for email preparation endpoint
+  - Test POST /api/emails/prepare with valid data returns 201 and tracking data
+  - Test endpoint creates TrackedEmail record in database
+  - Test endpoint generates unique tracking_pixel_id
+  - Test endpoint injects pixel into HTML body
+  - Test endpoint requires authentication
+  - Test endpoint validates input fields
+
+- [ ] **Step 7.5:** Write integration tests for email listing endpoint
+  - Test GET /api/emails returns user's tracked emails only
+  - Test response includes open status and event counts
+  - Test pagination works correctly
+  - Test filtering by date range works
+  - Test requires authentication
+
+- [ ] **Step 7.6:** Write integration tests for email detail endpoint
+  - Test GET /api/emails/{id} returns full email details
+  - Test response includes all tracking events
+  - Test events sorted by timestamp
+  - Test user can only access their own emails (authorization)
+
+- [ ] **Step 7.7:** Write end-to-end integration test for complete tracking flow
+  - Test prepare email → send email → load pixel → create tracking event → WebSocket notification
+  - Test tracked_email record created with correct data
+  - Test tracking event associated with correct tracked_email
+  - Test notification delivered to user via WebSocket
+  - Test dashboard can retrieve and display tracking data
+
+- [ ] **Step 7.8:** Write integration tests for email status calculation
+  - Test email status shows "Not Opened" when no tracking events exist
+  - Test email status shows "Opened" after first open event
+  - Test open count increments correctly for multiple opens
+  - Test last_opened timestamp reflects most recent event
+
+- [ ] **Step 7.9:** Write integration tests for multi-user isolation
+  - Test User A cannot see User B's tracked emails
+  - Test User A cannot access User B's email details
+  - Test tracking events correctly associated with owning user
+
+- [ ] **Step 7.10:** Run all tests and ensure 70%+ code coverage
+  - Execute full test suite for Epic 1
+  - Generate coverage report for all packages
+  - Verify end-to-end tracking flow fully tested
+  - Document any known limitations or edge cases
+
 ---
 
 ## QA Verification Checklist

@@ -127,6 +127,44 @@ This story achieves platform parity by providing Outlook users the same seamless
 - [ ] Test in Outlook light mode
 - [ ] Test in Outlook dark mode
 
+### Unit and Integration Tests (90 min)
+
+- [ ] Write unit tests for Outlook compose window detection
+  - Test detecting Outlook compose window
+  - Test identifying Outlook form elements
+  - Test handling Outlook-specific DOM structure
+
+- [ ] Write unit tests for tracking toggle injection
+  - Test inserting toggle in Outlook compose UI
+  - Test toggle styling matches Outlook theme
+  - Test toggle state persistence
+
+- [ ] Write integration tests for send interception
+  - Test Outlook send button interception
+  - Test email data extraction from Outlook form
+  - Test API call before Outlook send
+  - Test fallback to normal send if tracking disabled
+
+- [ ] Write integration tests for Outlook API send
+  - Test email sent via Microsoft Graph API
+  - Test tracking pixel injected
+  - Test email in Outlook Sent Items
+  - Test TrackedEmail record created
+
+- [ ] Write integration tests for tracking indicators
+  - Test indicators appear in Outlook inbox
+  - Test indicators show open/click counts
+  - Test real-time updates via WebSocket
+
+- [ ] Write end-to-end test for Outlook flow
+  - Test compose → enable tracking → send → delivery → tracking → indicators
+  - Test works across Outlook.com and Outlook Office 365
+
+- [ ] Run all tests and ensure 70%+ code coverage
+  - Execute test suite
+  - Verify Outlook integration fully tested
+  - Test across different Outlook web versions
+
 ### QA Verification Checklist
 
 - [ ] Open outlook.live.com or outlook.office365.com

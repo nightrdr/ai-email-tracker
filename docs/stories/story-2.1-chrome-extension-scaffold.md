@@ -1030,6 +1030,63 @@ This story establishes the Chrome extension foundation that enables seamless ema
   - Open mail.google.com
   - Check browser console for "Gmail detected" message
 
+### Phase 8: Unit and Integration Tests (90 min)
+
+- [ ] **Step 8.1:** Install testing framework for Chrome extension
+  - Configure Jest for Chrome extension environment
+  - Install chrome-extension testing utilities
+  - Configure test scripts in package.json
+
+- [ ] **Step 8.2:** Write unit tests for OAuth token storage
+  - Test storing Gmail OAuth tokens in chrome.storage
+  - Test storing Outlook OAuth tokens in chrome.storage
+  - Test retrieving tokens from storage
+  - Test token expiration check logic
+
+- [ ] **Step 8.3:** Write unit tests for background service worker
+  - Test message handling between popup and background
+  - Test API authentication header injection
+  - Test token refresh trigger logic
+
+- [ ] **Step 8.4:** Write integration tests for OAuth flow
+  - Test initiate OAuth flow opens correct authorization URL
+  - Test OAuth callback handling stores tokens correctly
+  - Test disconnect clears tokens from storage
+  - Test OAuth state validation prevents CSRF attacks
+
+- [ ] **Step 8.5:** Write integration tests for popup UI
+  - Test popup shows "Not connected" when no tokens
+  - Test popup shows "Connected as: email" with tokens
+  - Test connect button triggers OAuth flow
+  - Test disconnect button clears tokens and updates UI
+
+- [ ] **Step 8.6:** Write tests for content script injection
+  - Test content script loads on mail.google.com
+  - Test content script loads on outlook.office.com
+  - Test content script does not load on other domains
+  - Test console message logged on Gmail/Outlook detection
+
+- [ ] **Step 8.7:** Write tests for manifest configuration
+  - Test all required permissions listed
+  - Test content script URL patterns correct
+  - Test background service worker registered
+  - Test CSP allows API calls to backend
+
+- [ ] **Step 8.8:** Write end-to-end test for complete OAuth flow
+  - Test user clicks connect → OAuth → tokens stored → UI updates
+  - Test tokens persist across browser restart
+  - Test disconnect flow clears all state
+
+- [ ] **Step 8.9:** Run all tests and ensure 70%+ code coverage
+  - Execute test suite for extension package
+  - Generate coverage report
+  - Verify OAuth and storage logic fully tested
+
+- [ ] **Step 8.10:** Test extension in incognito and multiple profiles
+  - Test extension works in incognito mode
+  - Test extension storage isolated between profiles
+  - Document any profile-specific behavior
+
 ---
 
 ## QA Verification Checklist

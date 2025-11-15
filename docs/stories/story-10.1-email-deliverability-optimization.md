@@ -102,6 +102,43 @@ Deliverability optimization is critical for ensuring tracked emails actually rea
 - [ ] Implement unsubscribe handling endpoint
 - [ ] Create suppression list for unsubscribed/bounced emails
 
+### Unit and Integration Tests (90 min)
+
+- [ ] Write unit tests for SPF/DKIM/DMARC validation
+  - Test checking SPF record exists
+  - Test parsing DKIM selector and key
+  - Test validating DMARC policy
+
+- [ ] Write unit tests for bounce classification
+  - Test identifying hard bounces (user doesn't exist)
+  - Test identifying soft bounces (mailbox full)
+  - Test identifying spam complaints
+
+- [ ] Write integration tests for deliverability monitoring
+  - Test bounce webhook from Gmail/Outlook processed
+  - Test spam complaint recorded
+  - Test bounce rate calculated
+  - Test deliverability score updated
+
+- [ ] Write integration tests for suppression list
+  - Test hard bounced emails added to suppression list
+  - Test suppressed emails prevented from future sends
+  - Test manual addition to suppression list
+
+- [ ] Write integration tests for recommendations
+  - Test recommendation to fix SPF if missing
+  - Test recommendation to add DKIM if not configured
+  - Test recommendation to reduce volume if bounce rate high
+
+- [ ] Write integration tests for UI
+  - Test deliverability dashboard shows SPF/DKIM/DMARC status
+  - Test bounce rate chart displayed
+  - Test suppression list management
+
+- [ ] Run all tests and ensure 70%+ code coverage
+  - Execute test suite
+  - Verify deliverability monitoring and optimization fully tested
+
 ### QA Verification Checklist
 
 - [ ] Compose email with spam trigger words ("FREE MONEY")

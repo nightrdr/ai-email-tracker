@@ -97,6 +97,47 @@ Data export and API access enables enterprise integration, allowing businesses t
 - [ ] Implement webhook configuration (POST /api/webhooks/configure)
 - [ ] Test webhook delivery with retry logic
 
+### Unit and Integration Tests (90 min)
+
+- [ ] Write unit tests for export formatting
+  - Test CSV generation with correct columns
+  - Test JSON formatting with proper structure
+  - Test Excel (.xlsx) generation
+  - Test data sanitization for exports
+
+- [ ] Write unit tests for pagination logic
+  - Test paginating large datasets (10,000+ records)
+  - Test cursor-based pagination
+  - Test page size limits
+
+- [ ] Write integration tests for export endpoints
+  - Test GET /api/export/emails?format=csv exports CSV
+  - Test GET /api/export/events?format=json exports JSON
+  - Test GET /api/export/analytics?format=xlsx exports Excel
+  - Test endpoints filter by date range
+  - Test endpoints require authentication
+  - Test endpoints enforce rate limits
+
+- [ ] Write integration tests for webhook delivery
+  - Test POST /api/webhooks creates webhook
+  - Test webhook triggers on tracking event
+  - Test webhook retries on failure (3 attempts)
+  - Test webhook includes signature for verification
+
+- [ ] Write integration tests for UI
+  - Test export page shows format options
+  - Test clicking Export button downloads file
+  - Test webhook configuration form
+  - Test webhook test button sends test payload
+
+- [ ] Write performance tests
+  - Test exporting 50,000 records completes in <30 seconds
+  - Test pagination handles large datasets efficiently
+
+- [ ] Run all tests and ensure 70%+ code coverage
+  - Execute test suite
+  - Verify export formatting and webhook delivery fully tested
+
 ### QA Verification Checklist
 
 - [ ] Call GET /api/export/emails?format=csv

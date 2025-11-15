@@ -2,11 +2,13 @@
 import tseslint from 'typescript-eslint';
 
 export default tseslint.config(
+  {
+    ignores: ['**/dist/**', 'build/**', 'coverage/**']
+  },
   js.configs.recommended,
   ...tseslint.configs.recommended,
   {
     files: ['**/*.ts', '**/*.tsx'],
-    ignores: ['dist/**', 'build/**', 'coverage/**'],
     languageOptions: {
       parserOptions: {
         projectService: true
@@ -17,7 +19,8 @@ export default tseslint.config(
         'warn',
         {
           argsIgnorePattern: '^_',
-          varsIgnorePattern: '^_'
+          varsIgnorePattern: '^_',
+          caughtErrorsIgnorePattern: '^_'
         }
       ]
     }

@@ -98,6 +98,43 @@ Custom domain tracking provides white-label branding, essential for agencies and
 - [ ] Add DNS instructions for users
 - [ ] Test with multiple custom domains per user
 
+### Unit and Integration Tests (90 min)
+
+- [ ] Write unit tests for DNS verification
+  - Test parsing DNS TXT records
+  - Test validating verification token
+  - Test handling DNS propagation delays
+
+- [ ] Write unit tests for URL generation
+  - Test generating tracking URLs with custom domain
+  - Test fallback to default domain if custom domain not verified
+
+- [ ] Write integration tests for domain management endpoints
+  - Test POST /api/domains adds custom domain
+  - Test GET /api/domains/verify checks DNS records
+  - Test DELETE /api/domains/:id removes domain
+  - Test endpoints require Pro/Business tier
+  - Test endpoints require authentication
+
+- [ ] Write integration tests for DNS verification
+  - Test verification fails if TXT record missing
+  - Test verification succeeds with correct TXT record
+  - Test re-verification after DNS changes
+
+- [ ] Write integration tests for tracking with custom domain
+  - Test tracking pixel served from custom domain
+  - Test tracking events recorded correctly
+  - Test SSL/HTTPS works with custom domain
+
+- [ ] Write integration tests for UI
+  - Test adding custom domain shows DNS instructions
+  - Test verification button checks DNS and updates status
+  - Test verified domains shown with green checkmark
+
+- [ ] Run all tests and ensure 70%+ code coverage
+  - Execute test suite
+  - Verify DNS verification and custom domain tracking fully tested
+
 ### QA Verification Checklist
 
 - [ ] Add custom domain "track.mycompany.com"

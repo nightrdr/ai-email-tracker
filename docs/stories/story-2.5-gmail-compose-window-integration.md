@@ -105,6 +105,33 @@ The compose window toggle is the primary user touchpoint for enabling tracking, 
 - [ ] Prevent multiple injections with data attributes
 - [ ] Test with reply, forward, and new compose scenarios
 
+### Unit and Integration Tests (60 min)
+
+- [ ] Write unit tests for compose window detection
+  - Test detecting Gmail compose window opened
+  - Test identifying compose form elements
+  - Test handling multiple compose windows
+
+- [ ] Write unit tests for UI injection
+  - Test inserting tracking toggle checkbox
+  - Test toggle positioning and styling
+  - Test toggle state persistence from storage
+
+- [ ] Write integration tests for compose window integration
+  - Test tracking toggle appears in compose window
+  - Test toggle state persists across compose sessions
+  - Test toggle visible before send button
+
+- [ ] Write integration tests for send interception
+  - Test send button click intercepted when tracking enabled
+  - Test email data extracted from compose form
+  - Test API call made before actual Gmail send
+  - Test tracking disabled allows normal send
+
+- [ ] Run all tests and ensure 70%+ code coverage
+  - Execute test suite
+  - Verify compose integration fully tested
+
 ### QA Verification Checklist
 
 - [ ] Open Gmail, click "Compose"

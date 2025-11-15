@@ -94,6 +94,35 @@ Team analytics and leaderboards gamify performance and provide visibility into t
 - [ ] Implement PDF export using `puppeteer` or `pdfkit`
 - [ ] Create individual member detail view
 
+### Unit and Integration Tests (60 min)
+
+- [ ] Write unit tests for metric calculation
+  - Test calculating emails sent per member
+  - Test calculating open rate per member
+  - Test calculating reply rate per member
+  - Test ranking algorithm (sort by performance score)
+
+- [ ] Write integration tests for analytics endpoints
+  - Test GET /api/teams/:id/analytics returns team metrics
+  - Test GET /api/teams/:id/leaderboard returns ranked members
+  - Test endpoints filter by date range
+  - Test endpoints require team membership
+  - Test endpoints enforce permissions
+
+- [ ] Write integration tests for leaderboard display
+  - Test leaderboard shows all team members
+  - Test members ranked by performance
+  - Test metrics displayed correctly
+  - Test clicking member shows detail view
+
+- [ ] Write integration tests for real-time updates
+  - Test leaderboard updates when member sends email
+  - Test metrics recalculate when tracking event occurs
+
+- [ ] Run all tests and ensure 70%+ code coverage
+  - Execute test suite
+  - Verify team analytics and leaderboard fully tested
+
 ### QA Verification Checklist
 
 - [ ] Open team dashboard

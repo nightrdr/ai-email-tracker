@@ -133,6 +133,47 @@ This story completes the Gmail tracking workflow, enabling users to send tracked
 - [ ] Increment email send count for user
 - [ ] Add endpoint GET `/api/user/quota` to check remaining sends
 
+### Unit and Integration Tests (90 min)
+
+- [ ] Write unit tests for email extraction logic
+  - Test extracting recipient from compose form
+  - Test extracting subject from compose form
+  - Test extracting HTML body from compose form
+  - Test handling CC/BCC fields
+
+- [ ] Write unit tests for send interception
+  - Test capturing Gmail send event
+  - Test preventing default send when tracking enabled
+  - Test allowing default send when tracking disabled
+
+- [ ] Write integration tests for complete send flow
+  - Test user composes email with tracking enabled
+  - Test extension calls backend API to prepare email
+  - Test backend injects tracking pixel
+  - Test extension sends via Gmail API
+  - Test email appears in Sent folder
+  - Test TrackedEmail record created
+
+- [ ] Write integration tests for error handling
+  - Test network failure during API call
+  - Test Gmail API send failure
+  - Test invalid OAuth token handling
+  - Test user shown appropriate error messages
+
+- [ ] Write integration tests for tracking toggle
+  - Test tracking disabled sends via normal Gmail (no API call)
+  - Test tracking enabled uses API + Gmail API flow
+  - Test toggle state persists
+
+- [ ] Write end-to-end test for user flow
+  - Test compose → enable tracking → send → pixel injected → delivery → tracking
+  - Test recipient opens email → tracking event → WebSocket notification → Gmail indicator updates
+
+- [ ] Run all tests and ensure 70%+ code coverage
+  - Execute test suite
+  - Verify send integration fully tested
+  - Test across different Gmail UI versions
+
 ### QA Verification Checklist
 
 - [ ] Enable tracking toggle in Gmail compose

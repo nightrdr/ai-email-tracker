@@ -99,6 +99,52 @@ This story provides Outlook users the same tracking capabilities as Gmail users,
 - [ ] Implement retry with exponential backoff
 - [ ] Test with real Outlook account
 
+### Unit and Integration Tests (90 min)
+
+- [ ] Write unit tests for Outlook service email composition
+  - Test Microsoft Graph API message format
+  - Test HTML body with tracking pixel injection
+  - Test headers and metadata correctly set
+
+- [ ] Write unit tests for OAuth token handling
+  - Test token refresh when expired
+  - Test invalid token error handling
+  - Test revoked access handling
+
+- [ ] Write unit tests for error handling
+  - Test network failures with retry logic
+  - Test rate limit exceeded handling
+  - Test invalid recipient handling
+  - Test malformed email data validation
+
+- [ ] Write integration tests for Outlook send endpoint
+  - Test POST /api/emails/send-outlook sends email successfully
+  - Test endpoint creates TrackedEmail record
+  - Test endpoint returns message_id and tracking_pixel_id
+  - Test endpoint requires authentication
+  - Test endpoint validates input fields
+
+- [ ] Write integration tests for Microsoft Graph API
+  - Test email sent via Graph API appears in Sent Items
+  - Test tracking pixel correctly injected
+  - Test email content matches input data
+
+- [ ] Write integration tests for error scenarios
+  - Test expired token triggers refresh
+  - Test revoked access returns error
+  - Test rate limit handling
+  - Test network failure retry logic
+
+- [ ] Write end-to-end test for Outlook send flow
+  - Test extension OAuth → send via Outlook → delivery → tracking
+  - Test sent email in Outlook Sent Items
+  - Test tracking when recipient opens
+
+- [ ] Run all tests and ensure 70%+ code coverage
+  - Execute test suite
+  - Verify Outlook integration fully tested
+  - Document Graph API throttling limits
+
 ### QA Verification Checklist
 
 - [ ] Send email via Outlook API successfully

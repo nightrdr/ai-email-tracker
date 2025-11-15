@@ -1,13 +1,49 @@
-﻿{
+{
   "name": "@ai-email-tracker/api",
   "version": "0.1.0",
   "private": true,
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "dev": "echo API dev mode",
+    "dev": "ts-node src/index.ts",
     "build": "tsc -p tsconfig.json",
-    "test": "echo API tests",
-    "lint": "eslint \"src/**/*.ts\""
+    "build:migrations": "tsc -p tsconfig.migrations.json",
+    "test": "pnpm --filter @ai-email-tracker/shared build && pnpm run build:migrations && cross-env NODE_ENV=test jest --runInBand",
+    "test:watch": "pnpm --filter @ai-email-tracker/shared build && pnpm run build:migrations && cross-env NODE_ENV=test jest --watch --runInBand",
+    "test:coverage": "pnpm --filter @ai-email-tracker/shared build && pnpm run build:migrations && cross-env NODE_ENV=test jest --coverage --runInBand",
+    "lint": "eslint \"src/**/*.ts\"",
+    "migrate:create": "node-pg-migrate -f .migrate.json --tsconfig tsconfig.json create",
+    "migrate:up": "pnpm run build:migrations && cross-env DATABASE_URL=postgresql://aitracker:devpassword@localhost:5432/ai_tracker_dev node-pg-migrate -f .migrate.json up",
+    "migrate:down": "pnpm run build:migrations && cross-env DATABASE_URL=postgresql://aitracker:devpassword@localhost:5432/ai_tracker_dev node-pg-migrate -f .migrate.json down",
+    "migrate:redo": "pnpm run build:migrations && cross-env DATABASE_URL=postgresql://aitracker:devpassword@localhost:5432/ai_tracker_dev node-pg-migrate -f .migrate.json redo",
+    "migrate:up:test": "pnpm run build:migrations && cross-env DATABASE_URL=postgresql://aitracker:devpassword@localhost:5433/ai_tracker_test node-pg-migrate -f .migrate.json up",
+    "migrate:down:test": "pnpm run build:migrations && cross-env DATABASE_URL=postgresql://aitracker:devpassword@localhost:5433/ai_tracker_test node-pg-migrate -f .migrate.json down",
+    "migrate:redo:test": "pnpm run build:migrations && cross-env DATABASE_URL=postgresql://aitracker:devpassword@localhost:5433/ai_tracker_test node-pg-migrate -f .migrate.json redo",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "express-validator": "^7.3.0",
+    "jsonwebtoken": "^9.0.2",
+    "pg": "^8.16.3"
+  },
+  "devDependencies": {
+    "@jest/globals": "^29.7.0",
+    "@types/bcrypt": "^6.0.0",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.5",
+    "@types/jest": "^29.5.14",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/pg": "^8.15.6",
+    "@types/supertest": "^6.0.3",
+    "cross-env": "^10.1.0",
+    "jest": "^29.7.0",
+    "node-pg-migrate": "^8.0.3",
+    "supertest": "^7.1.4",
+    "ts-jest": "^29.4.5",
+    "ts-node": "^10.9.2"
   }
 }

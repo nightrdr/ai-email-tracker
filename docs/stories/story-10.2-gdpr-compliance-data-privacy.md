@@ -103,6 +103,51 @@ GDPR compliance is legally required for EU users and demonstrates commitment to 
 - [ ] Implement consent tracking per recipient
 - [ ] Add "Do Not Track" list functionality
 
+### Unit and Integration Tests (90 min)
+
+- [ ] Write unit tests for data retention logic
+  - Test calculating data age
+  - Test identifying data eligible for deletion (older than retention period)
+  - Test preserving data within retention period
+
+- [ ] Write unit tests for consent tracking
+  - Test recording consent timestamp
+  - Test consent version tracking
+  - Test consent expiration logic
+
+- [ ] Write integration tests for data export endpoint
+  - Test GET /api/gdpr/export returns all user data
+  - Test export includes all tables (emails, events, profile)
+  - Test export format is machine-readable (JSON)
+  - Test endpoint requires user authentication
+
+- [ ] Write integration tests for data deletion endpoint
+  - Test DELETE /api/gdpr/delete removes all user data
+  - Test deletion cascades to related records
+  - Test deletion cannot be undone
+  - Test audit log records deletion
+
+- [ ] Write integration tests for consent management
+  - Test consent banner shown to new users
+  - Test accepting consent records timestamp
+  - Test declining consent prevents tracking
+  - Test withdrawing consent stops future tracking
+
+- [ ] Write integration tests for data retention
+  - Test cron job deletes data older than retention period
+  - Test anonymization of old tracking events
+  - Test audit log preserved per legal requirements
+
+- [ ] Write integration tests for "Do Not Track" list
+  - Test adding email to DNT list stops tracking
+  - Test DNT respected across all tracking types (pixel, links, attachments)
+  - Test removing from DNT list re-enables tracking
+
+- [ ] Run all tests and ensure 70%+ code coverage
+  - Execute test suite
+  - Verify GDPR compliance features fully tested
+  - Document data retention and deletion policies
+
 ### QA Verification Checklist
 
 - [ ] Open web app → cookie consent banner appears

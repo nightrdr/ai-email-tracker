@@ -98,6 +98,49 @@ Profile management provides users control over their experience and account, ess
 - [ ] Create token management UI
 - [ ] Add account deletion with confirmation flow
 
+### Unit and Integration Tests (60 min)
+
+- [ ] Write unit tests for profile update validation
+  - Test email format validation
+  - Test name length validation
+  - Test timezone validation
+  - Test notification preferences validation
+
+- [ ] Write integration tests for profile endpoints
+  - Test GET /api/user/profile returns user profile
+  - Test PUT /api/user/profile updates profile
+  - Test PATCH /api/user/password changes password
+  - Test DELETE /api/user/account deletes account
+  - Test all endpoints require authentication
+
+- [ ] Write integration tests for profile updates
+  - Test updating name updates database
+  - Test updating email sends verification email
+  - Test updating timezone affects notification times
+  - Test updating notification preferences persists
+
+- [ ] Write integration tests for password change
+  - Test changing password requires old password
+  - Test new password must meet requirements (8+ chars, letter+number)
+  - Test password change invalidates old JWT tokens
+  - Test user can login with new password
+
+- [ ] Write integration tests for account deletion
+  - Test deletion requires password confirmation
+  - Test deletion removes user data
+  - Test deletion removes associated tracked emails and events
+  - Test deletion cancels active subscriptions
+
+- [ ] Write integration tests for UI
+  - Test profile form displays current data
+  - Test submitting form updates profile
+  - Test validation errors shown for invalid input
+  - Test success message shown on save
+
+- [ ] Run all tests and ensure 70%+ code coverage
+  - Execute test suite
+  - Verify profile management and account deletion fully tested
+
 ### QA Verification Checklist
 
 - [ ] Open Profile Settings

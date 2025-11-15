@@ -100,6 +100,54 @@ This story enables users to send tracked emails directly through Gmail API, prov
 - [ ] Create unit tests for Gmail service
 - [ ] Test with real Gmail account
 
+### Unit and Integration Tests (90 min)
+
+- [ ] Write unit tests for Gmail service MIME message creation
+  - Test MIME format with HTML body
+  - Test tracking pixel injection into MIME message
+  - Test headers (To, From, Subject) correctly formatted
+  - Test multipart message structure
+
+- [ ] Write unit tests for OAuth token handling
+  - Test token refresh when expired
+  - Test handles invalid token error
+  - Test handles revoked access error
+
+- [ ] Write unit tests for error handling
+  - Test network timeout handling
+  - Test Gmail API quota exceeded error
+  - Test invalid recipient email address
+  - Test retry logic for transient failures
+
+- [ ] Write integration tests for Gmail send endpoint
+  - Test POST /api/emails/send-gmail with valid data sends email successfully
+  - Test endpoint creates TrackedEmail record in database
+  - Test endpoint returns message_id and tracking_pixel_id
+  - Test endpoint requires authentication
+  - Test endpoint validates required fields
+
+- [ ] Write integration tests for Gmail API interaction
+  - Test email sent via Gmail API appears in Sent folder
+  - Test tracking pixel correctly injected in sent email
+  - Test sent email contains correct recipient, subject, body
+  - Test message_id matches Gmail API response
+
+- [ ] Write integration tests for error scenarios
+  - Test expired OAuth token triggers refresh
+  - Test revoked OAuth access returns appropriate error
+  - Test rate limit exceeded returns 429 error
+  - Test network failure triggers retry logic
+
+- [ ] Write end-to-end test for complete send flow
+  - Test extension OAuth → backend send → Gmail delivery → pixel tracking
+  - Test sent email appears in Gmail Sent folder
+  - Test tracking events recorded when recipient opens email
+
+- [ ] Run all tests and ensure 70%+ code coverage
+  - Execute test suite
+  - Verify Gmail integration logic fully tested
+  - Document Gmail API rate limits and quotas
+
 ### QA Verification Checklist
 
 - [ ] Send email with tracking enabled via API

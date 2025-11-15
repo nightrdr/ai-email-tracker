@@ -1,0 +1,11 @@
+{
+  "migrations-table": "pgmigrations",
+  "dir": "dist/migrations",
+  "schema": "public",
+  "check-order": true,
+  "migration-file-language": "js",
+  "tsconfig": "tsconfig.json",
+  "ts-node": false,
+  "tsx": false
+}
+

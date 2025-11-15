@@ -107,6 +107,62 @@ Billing is essential for monetization and enables the business model. Proper imp
 - [ ] Add upgrade/downgrade UI
 - [ ] Implement pro-rated refunds for downgrades
 
+### Unit and Integration Tests (120 min)
+
+- [ ] Write unit tests for subscription tier logic
+  - Test feature limits for each tier (Free, Individual, Pro, Business)
+  - Test checking if user has access to feature
+  - Test upgrade/downgrade tier transitions
+  - Test pro-rated calculation logic
+
+- [ ] Write integration tests for Razorpay integration
+  - Test creating Razorpay order
+  - Test handling payment success webhook
+  - Test handling payment failure webhook
+  - Test subscription created/updated on success
+  - Test idempotency (duplicate webhook handling)
+
+- [ ] Write integration tests for PayPal integration
+  - Test creating PayPal subscription
+  - Test handling PayPal webhook events
+  - Test subscription activation
+  - Test subscription cancellation
+
+- [ ] Write integration tests for billing endpoints
+  - Test POST /api/billing/subscribe/:tier creates subscription
+  - Test POST /api/billing/cancel cancels subscription
+  - Test GET /api/billing/invoices returns invoice history
+  - Test endpoints require authentication
+  - Test endpoints update user subscription_tier
+
+- [ ] Write integration tests for feature gating
+  - Test Free tier blocked from Pro features
+  - Test Individual tier access to appropriate features
+  - Test Pro tier full access
+  - Test quota enforcement (emails per month)
+
+- [ ] Write integration tests for UI
+  - Test pricing page shows all tiers
+  - Test clicking Subscribe button initiates payment flow
+  - Test payment success updates UI to show current plan
+  - Test invoice history displayed in settings
+
+- [ ] Write tests for webhook security
+  - Test webhook signature validation (Razorpay)
+  - Test webhook signature validation (PayPal)
+  - Test invalid signatures rejected
+
+- [ ] Write tests for edge cases
+  - Test duplicate webhook delivery handled
+  - Test failed payment doesn't upgrade user
+  - Test subscription expiration downgrades to Free
+  - Test pro-rated refund calculation correct
+
+- [ ] Run all tests and ensure 70%+ code coverage
+  - Execute test suite
+  - Verify payment gateway integration and subscription logic fully tested
+  - Test with sandbox/test payment credentials
+
 ### QA Verification Checklist
 
 - [ ] User on Free plan (100 emails/month)

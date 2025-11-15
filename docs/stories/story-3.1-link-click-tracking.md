@@ -100,6 +100,46 @@ Link click tracking provides deeper engagement insights beyond opens, helping us
 - [ ] Show links per email with click counts
 - [ ] Integrate into email preparation flow
 
+### Unit and Integration Tests (90 min)
+
+- [ ] Write unit tests for link detection and replacement
+  - Test finding all `<a>` tags in HTML
+  - Test generating tracking URLs with unique IDs
+  - Test replacing original URLs with tracking URLs
+  - Test preserving link text and attributes
+  - Test handling malformed HTML
+
+- [ ] Write unit tests for URL redirect logic
+  - Test redirect to original URL after tracking
+  - Test redirect performance (<100ms)
+  - Test handling invalid tracking IDs
+  - Test handling deleted/expired links
+
+- [ ] Write integration tests for link tracking endpoint
+  - Test GET /api/track/link/{id} creates click event in database
+  - Test endpoint redirects to original URL (302)
+  - Test endpoint handles X-Forwarded-For for IP extraction
+  - Test endpoint captures user agent and timestamp
+
+- [ ] Write integration tests for link click recording
+  - Test click event created with correct tracked_email_id
+  - Test click event includes IP, user agent, timestamp
+  - Test multiple clicks on same link recorded separately
+  - Test click events trigger WebSocket notifications
+
+- [ ] Write integration tests for dashboard display
+  - Test dashboard shows links for each tracked email
+  - Test links display with click counts
+  - Test links sorted by most clicked
+  - Test clicking link details shows who clicked and when
+
+- [ ] Write end-to-end test for link tracking flow
+  - Test email prepared with links → URLs replaced → email sent → recipient clicks → tracking event → notification → dashboard updates
+
+- [ ] Run all tests and ensure 70%+ code coverage
+  - Execute test suite
+  - Verify link detection, replacement, and tracking fully tested
+
 ### QA Verification Checklist
 
 - [ ] Send email with 3 different links

@@ -202,6 +202,53 @@ Provide analysis as JSON:
 - [ ] Send email, recipient replies
 - [ ] Track accuracy over time
 
+### Phase 4: Unit and Integration Tests (90 min)
+
+- [ ] Write unit tests for reply prediction logic
+  - Test prompt construction with and without recipient history
+  - Test parsing prediction response (probability, factors, suggestions)
+  - Test handling missing recipient history data
+  - Test error handling for API failures
+
+- [ ] Write unit tests for recipient history calculation
+  - Test calculating reply rate from historical data
+  - Test calculating average reply time
+  - Test handling new recipients (no history)
+
+- [ ] Write integration tests for prediction endpoint
+  - Test POST /api/ai/reply-prediction with valid email returns prediction
+  - Test endpoint includes probability, factors, and suggestions
+  - Test endpoint uses recipient history if available
+  - Test endpoint requires authentication
+  - Test endpoint validates input
+
+- [ ] Write integration tests for OpenAI API
+  - Test actual API call with real OpenAI key
+  - Test response time <3 seconds
+  - Test handling rate limits and errors
+
+- [ ] Write integration tests for prediction display
+  - Test prediction shown in extension compose window
+  - Test color-coded probability indicator (red <30%, yellow 30-60%, green >60%)
+  - Test factors displayed in collapsible section
+  - Test suggestions applied to email when clicked
+
+- [ ] Write accuracy tracking tests
+  - Test prediction stored when email sent
+  - Test actual reply tracked when recipient replies
+  - Test accuracy calculated over time
+  - Test accuracy dashboard shows prediction vs. actual
+
+- [ ] Write quality tests
+  - Test predictions are reasonable for different email types
+  - Test factors are relevant and specific
+  - Test suggestions improve reply probability
+
+- [ ] Run all tests and ensure 70%+ code coverage
+  - Execute test suite
+  - Verify reply prediction and accuracy tracking fully tested
+  - Document prediction accuracy benchmarks
+
 ---
 
 ## Definition of Done

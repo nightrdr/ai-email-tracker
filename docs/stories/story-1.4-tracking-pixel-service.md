@@ -575,6 +575,61 @@ This story delivers the core value proposition - email open tracking. It's the f
   # Or check logs for location extracted from your IP
   ```
 
+### Phase 8: Unit and Integration Tests (90 min)
+
+- [ ] **Step 8.1:** Install testing framework if not already configured
+
+- [ ] **Step 8.2:** Write unit tests for GeoIP service
+  - Test location lookup with valid public IP returns city and country
+  - Test location lookup with localhost/private IP returns null
+  - Test location lookup with invalid IP handles error gracefully
+  - Test caching mechanism works for repeated lookups
+
+- [ ] **Step 8.3:** Write unit tests for tracking service deduplication logic
+  - Test first open event within 5 minutes is recorded
+  - Test duplicate open within 5 minutes is ignored
+  - Test open after 5 minutes is recorded as new event
+  - Test deduplication key generation
+
+- [ ] **Step 8.4:** Write unit tests for pixel image generation
+  - Test 1x1 transparent PNG is valid image format
+  - Test image has correct headers (Content-Type: image/png)
+  - Test image buffer is correct size
+
+- [ ] **Step 8.5:** Write integration tests for pixel endpoint
+  - Test GET /api/track/pixel/{valid-uuid}.png returns 200 and PNG image
+  - Test pixel endpoint creates tracking event in database
+  - Test endpoint captures IP address from request
+  - Test endpoint captures user agent from headers
+  - Test endpoint handles X-Forwarded-For proxy headers
+  - Test endpoint works with invalid/non-existent tracking IDs (still returns pixel)
+
+- [ ] **Step 8.6:** Write integration tests for location tracking
+  - Test location is extracted from public IP and stored in database
+  - Test location is null for localhost/private IPs
+  - Test location format includes city and country
+
+- [ ] **Step 8.7:** Write integration tests for deduplication
+  - Test multiple pixel loads within 5 minutes create only one event
+  - Test pixel loads after 5-minute window create new events
+  - Test deduplication works across different tracked emails
+
+- [ ] **Step 8.8:** Write performance tests for pixel endpoint
+  - Test endpoint responds in under 200ms (p95)
+  - Test endpoint handles 100+ concurrent requests
+  - Test database connection pooling works under load
+
+- [ ] **Step 8.9:** Run all tests and ensure 70%+ code coverage
+  - Execute test suite
+  - Generate coverage report
+  - Verify tracking logic fully tested
+  - Fix any failing tests
+
+- [ ] **Step 8.10:** Add load testing script for pixel endpoint performance
+  - Create simple load test script
+  - Document performance benchmarks
+  - Verify <200ms response time requirement
+
 ---
 
 ## QA Verification Checklist

@@ -241,6 +241,53 @@ Focus on actionable, specific suggestions for improvement.`;
 - [ ] Display score with visual indicator (color-coded)
 - [ ] Show suggestions in collapsible panel
 
+### Phase 5: Unit and Integration Tests (90 min)
+
+- [ ] Write unit tests for OpenAI service
+  - Test prompt construction with different email types
+  - Test response parsing and validation
+  - Test error handling for API failures
+  - Test retry logic for rate limits
+
+- [ ] Write unit tests for caching logic
+  - Test cache key generation
+  - Test cache hit retrieval
+  - Test cache miss triggers API call
+  - Test cache expiration
+
+- [ ] Write integration tests for scoring endpoint
+  - Test POST /api/emails/score with valid email returns score
+  - Test endpoint returns suggestions array
+  - Test endpoint caches results for identical emails
+  - Test endpoint requires authentication
+  - Test endpoint validates input
+
+- [ ] Write integration tests for OpenAI API
+  - Test actual API call with real OpenAI key
+  - Test response parsing for different email types
+  - Test handling of API errors (rate limit, invalid key, timeout)
+  - Test response time <3 seconds
+
+- [ ] Write integration tests for score display in dashboard
+  - Test score displayed with color-coded visual
+  - Test suggestions shown in collapsible panel
+  - Test clicking suggestion applies to email
+
+- [ ] Write performance tests
+  - Test caching reduces API calls by 80%+
+  - Test concurrent requests handled correctly
+  - Test response time under load
+
+- [ ] Write quality tests
+  - Test scoring accuracy with various email samples
+  - Test suggestions are relevant and actionable
+  - Test edge cases (very short emails, very long emails, non-English)
+
+- [ ] Run all tests and ensure 70%+ code coverage
+  - Execute test suite
+  - Verify OpenAI integration and caching fully tested
+  - Document OpenAI API costs and rate limits
+
 ### QA Verification Checklist
 
 - [ ] Compose email in Gmail extension

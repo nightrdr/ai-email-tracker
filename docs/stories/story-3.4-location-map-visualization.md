@@ -97,6 +97,45 @@ Geographic visualization helps users understand audience distribution and can in
 - [ ] Add tooltips with location details
 - [ ] Handle locations without coordinates (skip or use country-level)
 
+### Unit and Integration Tests (60 min)
+
+- [ ] Write unit tests for location data aggregation
+  - Test grouping tracking events by city
+  - Test calculating open count per location
+  - Test handling null/missing location data
+  - Test converting city names to coordinates (geocoding)
+
+- [ ] Write unit tests for map marker sizing
+  - Test calculating marker size based on open count
+  - Test minimum and maximum marker sizes
+  - Test color coding by engagement level
+
+- [ ] Write integration tests for location API endpoint
+  - Test GET /api/dashboard/locations returns aggregated location data
+  - Test endpoint includes coordinates for mapping
+  - Test endpoint filters by user
+  - Test endpoint requires authentication
+
+- [ ] Write integration tests for map component
+  - Test MapView renders world map
+  - Test markers display at correct coordinates
+  - Test marker tooltips show location details
+  - Test clicking marker shows email list for that location
+
+- [ ] Write integration tests for real-time updates
+  - Test new tracking event with location adds/updates marker
+  - Test WebSocket notification triggers map refresh
+
+- [ ] Write tests for edge cases
+  - Test handling locations without coordinates
+  - Test handling unknown/invalid city names
+  - Test map with zero data points
+
+- [ ] Run all tests and ensure 70%+ code coverage
+  - Execute test suite
+  - Verify map rendering and location aggregation fully tested
+  - Test map interactions (zoom, pan, markers)
+
 ### QA Verification Checklist
 
 - [ ] Dashboard shows world map
