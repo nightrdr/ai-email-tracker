@@ -1,0 +1,13 @@
+﻿{
+  "name": "@ai-email-tracker/api",
+  "version": "0.1.0",
+  "private": true,
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "dev": "echo API dev mode",
+    "build": "tsc -p tsconfig.json",
+    "test": "echo API tests",
+    "lint": "eslint \"src/**/*.ts\""
+  }
+}

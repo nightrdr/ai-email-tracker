@@ -1,0 +1,13 @@
+﻿{
+  "name": "@ai-email-tracker/shared",
+  "version": "0.1.0",
+  "private": true,
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "echo Shared dev mode",
+    "test": "echo Shared tests",
+    "lint": "eslint \"src/**/*.ts\""
+  }
+}

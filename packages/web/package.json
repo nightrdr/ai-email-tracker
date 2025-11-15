@@ -1,0 +1,13 @@
+﻿{
+  "name": "@ai-email-tracker/web",
+  "version": "0.1.0",
+  "private": true,
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "dev": "echo Web dev mode",
+    "build": "tsc -p tsconfig.json",
+    "test": "echo Web tests",
+    "lint": "eslint \"src/**/*.{ts,tsx}\""
+  }
+}
